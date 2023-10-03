@@ -1,0 +1,104 @@
+body {
+  background-color: #080202;
+  color: #FCE9F1;
+}
+
+.wrapper {
+  border: none;
+  box-shadow: 3px 3px 8px #FAF0E4;
+  border-radius: 8px;
+  margin: 0 20px;
+  margin-top: 20px;
+  text-align: center;
+  padding-top: 30px;
+  padding-bottom: 70px;
+}
+
+/* search // magnifying glass */
+#cityInput {
+  border-radius: 10px;
+  border: none;
+  box-shadow: 3px 3px 8px #FAF0E4;
+  font-size: 18px;
+  font-weight: 25px;
+  margin: 5px auto;
+  padding: 10px;
+}
+
+/* .fa-magnifying-glass, .fa-location-dot {
+  color: #FFF2D8;
+  font-size: 25px;
+  font-weight: bolder;
+  margin: 5px auto;
+  padding-left: 20px;
+  transition: 300ms all ease-in-out;
+}
+
+.fa-magnifying-glass:hover {
+  color: #F1B4BB;
+  background: black;
+  transition: all 180ms ease-in;
+}
+
+.fa-location-dot:hover {
+  color: #F1B4BB;
+  background: black;
+  transition: all 180ms ease-in;
+} */
+
+/* city & date */
+.overview {
+  padding: 20px;
+  margin: 15px auto;
+  max-width: 500px;
+  max-height: 400px;
+  text-align: center;
+}
+
+h1, h2, h3 {
+  color: #FFF2D8;
+  font-size: 25px;
+}
+
+/* temperature */
+.temp {
+  color: #FFF2D8;
+  font-size: 25px;
+  position: relative;
+  bottom: 65px;
+  left: 30px;
+}
+
+#fahrenheitButton, #celsiusButton {
+  color: #FFF2D8;
+  text-decoration: none;
+
+}
+
+#icon {
+  position: relative;
+  right: 50px;
+  text-shadow: 5px 5px 20px #F1B4BB;
+}
+
+.humid, .speed {
+  position: relative;
+  top: 60px;
+  font-size: 25px;
+}
+
+/* footnote */
+.footnote {
+  margin-top: 30px;
+  text-align: center;
+  color: #FFF2D8;
+
+  #footnote a {
+    color: #FFF2D8;
+    transition: 300ms all ease-in-out;
+  }
+
+  #footnote a:hover {
+    color: #F1B4BB;
+  }
+}
