@@ -44,35 +44,41 @@ if (currentMinute < 10) {
 const dateElement = document.querySelector("#date-time")
 dateElement.innerHTML = `${currentDay} ${date} ${currentMonth} ${currentYear} <br /> ${currentHour}:${currentMinute}`
 
-// const formatHours = (timestamp) => {
-//   const date = new Date(timestamp);
-//   let hours = date.getHours();
-//   let minutes = date.getMinutes();
-//   if (hours < 10 ) {
-//     hours = `0${hours}`
-//   }
+// ============================
 
-//   if (minutes < 10) {
-//       minutes = `0${minutes}`
-//     }
+const temperatureElement = document.querySelector(".temp")
+const celsiusLink = document.querySelector("#celsiusButton")
+const fahrenheitLink = document.querySelector("#fahrenheitButton")
+let currentUnit = 'celsius'
+let celsius = parseFloat(temperatureElement.textContent)
 
-//     return `${hours}:${minutes}`
-// }
+const convertToFahrenheit = (event) => {
+  event.preventDefault();
 
-// const formatDate = (timestamp) => {
-//   const date = new Date(timestamp);
-//   const days = [
-//     "Sunday",
-//     "Monday",
-//     "Tuesday",
-//     "Wednesday",
-//     "Thursday",
-//     "Friday",
-//     "Saturday"
-//   ]
-//   const day = days[date.getDay()];
-//   return `${day} $formateHours(timestamp)`
-// }
+  if (currentUnit === 'celsius') {
+    currentUnit = 'fahrenheit'
+    celsiusLink.classList.remove("active")
+    fahrenheitLink.classList.add("active")
+
+    celsius = parseFloat(temperatureElement.textContent)
+    const fahrenheitTemperature = (celsius * 9/5) + 32
+    temperatureElement.textContent = fahrenheitTemperature.toFixed(2)
+  }
+}
+
+const convertToCelsius = (event) => {
+  event.preventDefault()
+
+  if (currentUnit === 'fahrenheit') {
+    currentUnit = 'celsius'
+    celsiusLink.classList.add("active")
+    fahrenheitLink.classList.remove("active")
+
+    temperatureElement.textContent = celsius.toFixed(2)
+  }
+}
+celsiusLink.addEventListener("click", convertToCelsius)
+fahrenheitLink.addEventListener("click", convertToFahrenheit)
 
 // ============================
 const updateSpeed = (response) => {
@@ -95,7 +101,6 @@ const updateDescription = (response) => {
 
 const updateIcon = (response) => {
   const iconImage = response.data.weather[0].icon
-  // console.log(iconImage)
   const iconDesciption = document.querySelector("#icon")
   iconDesciption.setAttribute("src", `https://openweathermap.org/img/wn/${iconImage}@2x.png`)
   iconDesciption.setAttribute("alt", response.data.weather[0].description)
@@ -125,7 +130,6 @@ const displayTemperature = (response) => {
 // get the city & form the url
 const searchCity = (city) => {
   const units = "metric";
-  const apiKey = "8fc0ddf73b13e506e70c74c535dae862";
   const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${units}`;
   axios.get(apiUrl).then(displayTemperature);
 }
