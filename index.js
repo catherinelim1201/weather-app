@@ -1,3 +1,5 @@
+// require('dotenv').config();
+
 const month = [
   "January",
   "February",
@@ -130,6 +132,7 @@ const displayTemperature = (response) => {
 // get the city & form the url
 const searchCity = (city) => {
   const units = "metric";
+  const apiKey="8fc0ddf73b13e506e70c74c535dae862"
   const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${units}`;
   axios.get(apiUrl).then(displayTemperature);
 }
